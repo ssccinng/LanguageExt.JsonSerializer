@@ -9,7 +9,7 @@ namespace LanguageExt.JsonSerializer
         /// </summary>
         public static JsonSerializerOptions AddLanguageExtConverters(this JsonSerializerOptions options)
         {
-            options.Converters.Add(new OptionConverterFactory());
+            options.Converters.Add(new OptionArrayConverterFactory());
             options.Converters.Add(new EitherConverterFactory());
             options.Converters.Add(new ArrConverterFactory());
             options.Converters.Add(new LstConverterFactory());
