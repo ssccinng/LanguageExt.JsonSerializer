@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LanguageExt.JsonSerializer/LanguageExt.JsonSerializer.csproj" />
+  <Project Path="SerializerTest/SerializerTest.csproj" />
+</Solution>
