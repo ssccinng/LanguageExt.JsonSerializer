@@ -11,6 +11,8 @@ namespace LanguageExt.JsonSerializer
         {
             options.Converters.Add(new OptionConverterFactory());
             options.Converters.Add(new EitherConverterFactory());
+            options.Converters.Add(new ArrConverterFactory());
+            options.Converters.Add(new LstConverterFactory());
             return options;
         }
     }

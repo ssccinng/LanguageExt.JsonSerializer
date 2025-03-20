@@ -1,8 +1,9 @@
-﻿using System;
-using System.Text.Json;
-using LanguageExt;
-using static LanguageExt.Prelude;
+﻿using LanguageExt;
+using LanguageExt.ClassInstances;
 using LanguageExt.JsonSerializer;
+using System;
+using System.Text.Json;
+using static LanguageExt.Prelude;
 
 // Set up the JSON serializer options with our custom converters
 var options = new JsonSerializerOptions
@@ -21,6 +22,12 @@ TestEither();
 
 // Test Try<T>
 // TestTry();
+
+// Test Arr<T>
+TestArr();
+
+// Test Lst<T>
+TestLst();
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
@@ -96,3 +103,51 @@ void TestEither()
     
 //     Console.WriteLine();
 // }
+
+void TestArr()
+{
+    Console.WriteLine("Testing Arr<T> Serialization:");
+    Console.WriteLine("----------------------------");
+
+    // Create an Arr
+    var arrValue = Arr.create(1, 2, 3, 4, 5);
+    string arrJson = JsonSerializer.Serialize(arrValue, options);
+    Console.WriteLine($"Arr<int> serialized: {arrJson}");
+
+    var deserializedArr = JsonSerializer.Deserialize<Arr<int>>(arrJson, options);
+    Console.WriteLine($"Deserialized: Count={deserializedArr.Count}, Values=[{string.Join(", ", deserializedArr)}]");
+    
+    // Test empty Arr
+    var emptyArr = Arr<string>.Empty;
+    string emptyArrJson = JsonSerializer.Serialize(emptyArr, options);
+    Console.WriteLine($"Empty Arr<string> serialized: {emptyArrJson}");
+    
+    var deserializedEmptyArr = JsonSerializer.Deserialize<Arr<string>>(emptyArrJson, options);
+    Console.WriteLine($"Deserialized empty: Count={deserializedEmptyArr.Count}, IsEmpty={deserializedEmptyArr.IsEmpty}");
+    
+    Console.WriteLine();
+}
+
+void TestLst()
+{
+    Console.WriteLine("Testing Lst<T> Serialization:");
+    Console.WriteLine("----------------------------");
+    var list = new List<int> { 1, 2, 3, 4 };
+    // Create a Lst - fix the creation method
+    var lstValue = new Lst<string> ([ "apple", "banana", "cherry"] );
+    string lstJson = JsonSerializer.Serialize(lstValue, options);
+    Console.WriteLine($"Lst<string> serialized: {lstJson}");
+
+    var deserializedLst = JsonSerializer.Deserialize<Lst<string>>(lstJson, options);
+    Console.WriteLine($"Deserialized: Count={deserializedLst.Count}, Values=[{string.Join(", ", deserializedLst)}]");
+    
+    // Test empty Lst - fix the empty creation
+    var emptyLst = Lst<double>.Empty;
+    string emptyLstJson = JsonSerializer.Serialize(emptyLst, options);
+    Console.WriteLine($"Empty Lst<double> serialized: {emptyLstJson}");
+    
+    var deserializedEmptyLst = JsonSerializer.Deserialize<Lst<double>>(emptyLstJson, options);
+    Console.WriteLine($"Deserialized empty: Count={deserializedEmptyLst.Count}, IsEmpty={deserializedEmptyLst.IsEmpty}");
+    
+    Console.WriteLine();
+}
