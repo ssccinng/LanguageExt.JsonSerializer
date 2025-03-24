@@ -165,29 +165,6 @@ void TestEither()
     Console.WriteLine();
 }
 
-// void TestTry()
-// {
-//     Console.WriteLine("Testing Try<T> Serialization:");
-//     Console.WriteLine("----------------------------");
-
-//     // Success case
-//     var successValue = Try<int>(() => 999);
-//     string successJson = JsonSerializer.Serialize(successValue, options);
-//     Console.WriteLine($"Success(999) serialized: {successJson}");
-
-//     var deserializedSuccess = JsonSerializer.Deserialize<Try<int>>(successJson, options);
-//     Console.WriteLine($"Deserialized: IsSucc={deserializedSuccess.IsSucc}, Value={deserializedSuccess.Match(v => v.ToString(), ex => $"Exception: {ex.Message}")}");
-
-//     // Failure case
-//     var failureValue = Try<int>(() => throw new InvalidOperationException("Something went wrong"));
-//     string failureJson = JsonSerializer.Serialize(failureValue, options);
-//     Console.WriteLine($"Failure serialized: {failureJson}");
-
-//     var deserializedFailure = JsonSerializer.Deserialize<Try<int>>(failureJson, options);
-//     Console.WriteLine($"Deserialized: IsSucc={deserializedFailure.IsSucc}, Value={deserializedFailure.Match(v => v.ToString(), ex => $"Exception: {ex.Message}")}");
-    
-//     Console.WriteLine();
-// }
 
 void TestArr()
 {
