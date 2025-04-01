@@ -1,3 +1,4 @@
+```cs
 using LanguageExt;
 using LanguageExt.ClassInstances;
 using LanguageExt.JsonSerializer;
@@ -237,3 +238,4 @@ public enum BatteryLevel
     E99 = 100,
     DSD = 101,
 }
+```
