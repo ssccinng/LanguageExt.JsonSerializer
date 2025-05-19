@@ -7,6 +7,7 @@ option将被序列化为数组，Either 将被序列化为对象，Arr 和 Lst �
 ## 使用方式示例
 
 ```csharp
+
 using LanguageExt;
 using LanguageExt.ClassInstances;
 using LanguageExt.JsonSerializer;
