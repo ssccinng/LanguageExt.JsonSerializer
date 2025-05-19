@@ -1,3 +1,12 @@
+本库提供一种序列化方式，支持将 LanguageExt 的一些常用不可变/只读数据类型（如 Option、Either、Arr、Lst 等）序列化为 JSON 格式，并且可以在反序列化时正确还原这些类型。
+
+option将被序列化为数组，Either 将被序列化为对象，Arr 和 Lst 将被序列化为数组。
+
+使用方式参考使用方式示例
+
+## 使用方式示例
+
+```csharp
 using LanguageExt;
 using LanguageExt.ClassInstances;
 using LanguageExt.JsonSerializer;
@@ -237,3 +246,4 @@ public enum BatteryLevel
     E99 = 100,
     DSD = 101,
 }
+```
